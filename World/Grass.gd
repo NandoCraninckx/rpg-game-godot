@@ -1,13 +1,14 @@
 extends Node2D
+
+const GrassEffect = preload("res://Effects/GrassEffect.tscn")
 		
 func create_grass_effect():
-	var GrassEffect = load("res://Effects/GrassEffect.tscn")
 	var grassEffect = GrassEffect.instance() 
 	
 	# When the game starts it takes the first scene form this tree. In this case the world tree
 	# Order from tree visable when starting the game, change the tab to Remote (left side, Scene)
 	var world = get_tree().current_scene
-	world.add_child(grassEffect)
+	get_parent().add_child(grassEffect)
 	grassEffect.global_position = global_position
 
 
