@@ -20,6 +20,7 @@ var knockBack = Vector2.ZERO
 onready var sprite = $AnimatedSprite
 onready var stats = $Stats
 onready var playerDetectionZone = $PlayerDetectionZone
+onready var hurtbox = $Hurtbox
 
 func _physics_process(delta):
 	knockBack = knockBack.move_toward(Vector2.ZERO, 200 * delta)
@@ -53,6 +54,7 @@ func seek_player():
 func _on_Hurtbox_area_entered(area):
 	stats.health -= area.damage
 	knockBack = area.knockback_vector * 120
+	hurtbox.create_hit_effect()
 
 # When the bat has no health anymore, it's automatically removed from the world
 # The health from the bat is coupled by => Signals Node no_health
