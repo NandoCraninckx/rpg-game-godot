@@ -518,7 +518,7 @@ position = Vector2( 161, 97 )
 scale = Vector2( 1, 1.06111 )
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 320, 180 )
+region_rect = Rect2( 0, 0, 630, 322 )
 
 [node name="DirthCliffTileMap" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
@@ -533,10 +533,18 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 10, 0, 3, 65546, 0, 131076, 65547, 0, 2, 131081, 0, 196608, 131082, 0, 262150, 131083, 0, 65538, 196618, 0, 65536, 196619, 0, 65538, 196623, 0, 0, 196624, 0, 1, 196625, 0, 2, 262154, 0, 65536, 262155, 0, 65538, 262157, 0, 0, 262158, 0, 1, 262159, 0, 65545, 262160, 0, 131073, 262161, 0, 196613, 262162, 0, 196609, 262163, 0, 196609, 262164, 0, 196610, 327680, 0, 0, 327681, 0, 1, 327682, 0, 2, 327686, 0, 0, 327687, 0, 1, 327688, 0, 1, 327689, 0, 1, 327690, 0, 65545, 327691, 0, 196613, 327692, 0, 196609, 327693, 0, 262150, 327694, 0, 65541, 327695, 0, 131074, 393216, 0, 131072, 393217, 0, 131073, 393218, 0, 9, 393219, 0, 1, 393220, 0, 2, 393222, 0, 65540, 393223, 0, 131073, 393224, 0, 131073, 393225, 0, 65542, 393226, 0, 65538, 393229, 0, 131072, 393230, 0, 131074, 458754, 0, 131072, 458755, 0, 131073, 458756, 0, 196613, 458757, 0, 196609, 458758, 0, 196615, 458761, 0, 65536, 458762, 0, 65538, 524297, 0, 131072, 524298, 0, 65543, 589834, 0, 65539, 655370, 0, 65539, 720905, 0, 196608, 720906, 0, 196616, 720907, 0, 196609, 720908, 0, 196609, 720909, 0, 196610 )
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 128, 48 )
+current = true
+smoothing_enabled = true
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 128, 48 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
+remote_path = NodePath("../../../Camera2D")
 
 [node name="Bushes" type="YSort" parent="YSort"]
 
@@ -632,4 +640,6 @@ position = Vector2( 153, 171 )
 [node name="Bat3" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 41, 93 )
 
-[node name="HealthUI" parent="." instance=ExtResource( 8 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthUI" parent="CanvasLayer" instance=ExtResource( 8 )]
